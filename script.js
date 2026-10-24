@@ -18,6 +18,18 @@
     card.addEventListener('click', function(){ card.classList.toggle('open'); });
   });
 
+  document.querySelectorAll('.rt-day-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var d = btn.getAttribute('data-day');
+      document.querySelectorAll('.rt-panel').forEach(function(p){
+        p.classList.toggle('active', p.getAttribute('data-rt-panel') === d);
+      });
+      document.querySelectorAll('.rt-day-btn').forEach(function(b){
+        b.setAttribute('aria-selected', b.getAttribute('data-day') === d ? 'true' : 'false');
+      });
+    });
+  });
+
   document.querySelectorAll('.faq-q').forEach(function(btn){
     btn.addEventListener('click', function(){
       btn.closest('.faq-item').classList.toggle('open');
